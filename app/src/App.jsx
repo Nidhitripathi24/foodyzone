@@ -1,24 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 const BASE_URL = "http://localhost:9000/";
 
 
 
 const App = () => {
- const [data, setData] =useState();
+ const [data, setData] =useState(null);
+ const [loading, setLoading] = useState(false);
+ const [error,setError] = useState(null);
+useEffect( ()=>{
+  const fetchFooddata = async()=>{
+  setLoading(true);
+  try {
+    const response = await fetch(BASE_URL)
 
-const fetchFooddata = async()=>{
+    const json =  await response.json();
 
-const response = await fetch(BASE_URL)
-
-const json = response.json
-console.log(json);
+     setData(json);
+     setLoading(false);
+  }  catch (error) {
+      setError("unable to fetch data")
+}
 
 };
+fetchFooddata();
 
-fetchFooddata
-
-  return 
+}, []
+)
+// fetchFooddata();
+  if(error) return<div> {error}</div>
+  if (loading) return <div>loading</div>
+  return( 
   <Container>
    <TopContainer>
 
@@ -47,7 +59,8 @@ fetchFooddata
 </FoodCartContainer>
 
 
-  </Container>;
+  </Container>
+  )
 };
 
 export default App;
