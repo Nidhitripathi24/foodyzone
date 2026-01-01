@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-const BASE_URL = "http://localhost:9000/";
-
+ export const BASE_URL = "http://localhost:9000/";
+import Searchresult from "./componenets/searchresult/Searchresult";
 
 
 const App = () => {
@@ -27,7 +27,18 @@ fetchFooddata();
 
 }, []
 )
-// fetchFooddata();
+console.log(data);
+// const temp = [
+  
+//     {
+//         "name": "Boilded Egg",
+//         "price": 10,
+//         "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+//         "image": "/images/egg.png",
+//         "type": "breakfast"
+//     },
+//   ];
+
   if(error) return<div> {error}</div>
   if (loading) return <div>loading</div>
   return( 
@@ -52,11 +63,8 @@ fetchFooddata();
 
 
 </FilterContainer>
-<FoodCartContainer>
-  <FoodCard>
+<Searchresult data = {data}/>
 
-  </FoodCard>
-</FoodCartContainer>
 
 
   </Container>
@@ -104,7 +112,7 @@ padding: 40px;
 
 `;
 
-const Button = styled.button`
+ export const Button = styled.button`
 background-color: #ff4343;
 border-radius: 5px;
 padding: 6px 12px;
@@ -113,10 +121,3 @@ color: white;
 
 `
 
-const FoodCartContainer = styled.section`
-background-image : url("/bg.png");
-background-size:cover;
-height:calc(100vh - 210px);
-
-`
-const FoodCard = styled.div``
