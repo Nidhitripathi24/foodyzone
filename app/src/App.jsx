@@ -63,7 +63,7 @@ console.log(data);
 
 
 </FilterContainer>
-<Searchresult data = {data}/>
+<Searchresult data={data} BASE_URL={BASE_URL} />
 
 
 

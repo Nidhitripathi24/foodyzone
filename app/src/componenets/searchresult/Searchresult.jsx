@@ -1,7 +1,7 @@
 
 import styled from 'styled-components'
-import { BASE_URL } from '../../App'
-const Searchresult = ({data}) => {
+
+const Searchresult = ({data , BASE_URL}) => {
 
   return (
     <FoodCartContainer> 
